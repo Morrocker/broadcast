@@ -79,7 +79,7 @@ func (b *Broadcaster) Broadcast() {
 	b.lock.Lock()
 	defer b.lock.Unlock()
 	x := utils.RandString(8)
-	log.Bench("Starting Broadcast %s", x)
+	log.Bench("Starting Broadcast %s to %d listeners", x, len(b.listeners))
 	for _, l := range b.listeners {
 		l.C <- ""
 	}
