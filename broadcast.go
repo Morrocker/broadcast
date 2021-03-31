@@ -81,6 +81,7 @@ func (b *Broadcaster) Broadcast() {
 	x := utils.RandString(8)
 	log.Bench("Starting Broadcast %s to %d listeners", x, len(b.listeners))
 	for _, l := range b.listeners {
+		log.Bench("Starting Broadcast %s to %d listeners", x, len(b.listeners))
 		l.C <- ""
 	}
 	log.Bench("Ending Broadcast %s", x)
