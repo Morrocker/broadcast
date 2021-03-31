@@ -78,9 +78,12 @@ func (b *Broadcaster) Close(id string) {
 func (b *Broadcaster) Broadcast() {
 	b.lock.Lock()
 	defer b.lock.Unlock()
+	x := utils.RandString(8)
+	log.Bench("Starting Broadcast %s", x)
 	for _, l := range b.listeners {
 		l.C <- ""
 	}
+	log.Bench("Ending Broadcast %s", x)
 }
 
 func (b *Broadcaster) CloseAll() {
